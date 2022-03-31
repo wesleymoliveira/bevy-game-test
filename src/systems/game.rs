@@ -1,7 +1,7 @@
-use crate::entities::State;
+use crate::entities::InitialState;
 use bevy::prelude::*;
 
-pub fn game(mut query: Query<&mut State>, time: Res<Time>) {
+pub fn game(mut query: Query<&mut InitialState>, time: Res<Time>) {
     let state = &mut query.iter_mut().next().unwrap();
 
     state.timer += time.delta_seconds();
