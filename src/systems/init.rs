@@ -1,4 +1,4 @@
-use crate::components::Grid;
+use crate::components::Tilemap;
 use crate::entities::{InitialState, Ufo};
 
 use bevy::{
@@ -61,11 +61,11 @@ fn init_grid(
 
     let mut entity_commands = commands.spawn();
 
-    let mut grid = Grid::new(size);
+    let mut grid = Tilemap::new(size);
     grid.randomize();
 
     entity_commands.insert(grid);
-    entity_commands.insert(Grid::new(size));
+    entity_commands.insert(Tilemap::new(size));
     entity_commands.insert_bundle(PbrBundle {
         mesh: m,
         material: material_handle,

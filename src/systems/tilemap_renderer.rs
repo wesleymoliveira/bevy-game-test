@@ -1,9 +1,9 @@
-use crate::components::Grid;
+use crate::components::Tilemap;
 use bevy::{math::vec2, prelude::*, render::mesh::Indices};
 
-pub fn grid_renderer(
+pub fn tilemap_renderer(
     mut meshes: ResMut<Assets<Mesh>>,
-    mut query: Query<(&Grid, &mut Handle<Mesh>)>,
+    mut query: Query<(&Tilemap, &mut Handle<Mesh>)>,
 ) {
     query.for_each_mut(|(grid, mesh)| {
         let mut m = meshes

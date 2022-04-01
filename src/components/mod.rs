@@ -1,5 +1,5 @@
 mod position;
 pub use position::*;
 
-mod grid;
-pub use grid::*;
+mod tilemap;
+pub use tilemap::*;

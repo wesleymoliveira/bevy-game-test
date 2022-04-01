@@ -13,16 +13,16 @@ impl Default for Cell {
 }
 
 #[derive(Component)]
-pub struct Grid {
+pub struct Tilemap {
     pub size: usize,
     pub cells: Vec<Cell>,
     pub sheet_width: u32,
     pub sheet_height: u32,
 }
 
-impl Grid {
-    pub fn new(size: usize) -> Grid {
-        let mut grid = Grid {
+impl Tilemap {
+    pub fn new(size: usize) -> Tilemap {
+        let mut grid = Tilemap {
             size,
             cells: vec![Cell::default(); size * size],
             sheet_width: 2,
