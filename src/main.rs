@@ -11,6 +11,7 @@ fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
         .add_startup_system(init)
+        .add_system(grid_renderer)
         .add_system(game)
         .run();
 }
