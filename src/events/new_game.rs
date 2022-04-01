@@ -1,5 +1,3 @@
-use bevy::prelude::*;
-
 pub struct NewGameEvent {
-    pub map_size: u32,
+    pub map_size: usize,
 }

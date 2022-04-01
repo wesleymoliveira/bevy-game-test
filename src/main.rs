@@ -27,6 +27,7 @@ fn main() {
     // add systems
     builder
         .add_startup_system(startup_system.system())
+        .add_system(input_system.system())
         .add_system(game_system.system())
         .add_system(tilemap_renderer.system())
         .add_system(movement_system.system());
