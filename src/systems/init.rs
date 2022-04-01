@@ -35,7 +35,7 @@ fn init_grid(
     let size = 16;
     let scale = 32.0;
 
-    let texture_handle: Handle<Image> = asset_server.load("icon.png");
+    let texture_handle: Handle<Image> = asset_server.load("spritesheet2.png");
     let spritesheet =
         TextureAtlas::from_grid(texture_handle.clone(), Vec2::new(16.0, 16.0), 16, 16);
     let spritesheet_handle = texture_atlases.add(spritesheet);
@@ -60,9 +60,18 @@ fn init_grid(
     });
 
     let mut entity_commands = commands.spawn();
+
+    let mut g = Grid::new(size);
+    let mut test = 0;
+    for i in &mut g.cells {
+        i.index = test % 4;
+        test += 1;
+    }
+
+    entity_commands.insert(g);
     entity_commands.insert(Grid::new(size));
     entity_commands.insert_bundle(PbrBundle {
-        mesh: m.clone(),
+        mesh: m,
         material: material_handle,
         ..Default::default()
     });
