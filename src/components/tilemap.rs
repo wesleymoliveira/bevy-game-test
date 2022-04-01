@@ -51,10 +51,10 @@ impl Tilemap {
     pub fn insert_entity(
         tilemap: Tilemap,
         texture_path: &str,
-        mut commands: &mut Commands,
+        commands: &mut Commands,
         asset_server: &Res<AssetServer>,
-        mut materials: &mut ResMut<Assets<StandardMaterial>>,
-        mut meshes: &mut ResMut<Assets<Mesh>>,
+        materials: &mut ResMut<Assets<StandardMaterial>>,
+        meshes: &mut ResMut<Assets<Mesh>>,
     ) -> Entity {
         let size = 16;
 

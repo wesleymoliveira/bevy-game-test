@@ -1,7 +1,7 @@
 use crate::components::{Thrust, Tile, Tilemap};
 
 use bevy::prelude::*;
-pub fn init(
+pub fn init_system(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
     mut materials: ResMut<Assets<StandardMaterial>>,
