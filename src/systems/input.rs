@@ -1,11 +1,10 @@
+use crate::NewGameEvent;
 use bevy::prelude::*;
 
-pub fn input_system(keyboard_input: Res<Input<KeyCode>>) {
-    if keyboard_input.pressed(KeyCode::A) {
-        println!("a pressed");
-    }
+pub fn input_system(keyboard_input: Res<Input<KeyCode>>, mut new_game: EventWriter<NewGameEvent>) {
+    if keyboard_input.pressed(KeyCode::A) {}
 
-    if keyboard_input.just_pressed(KeyCode::A) {
-        println!("a pressed 2");
+    if keyboard_input.just_pressed(KeyCode::F5) {
+        new_game.send(NewGameEvent::default());
     }
 }
