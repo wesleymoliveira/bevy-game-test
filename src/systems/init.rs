@@ -61,14 +61,10 @@ fn init_grid(
 
     let mut entity_commands = commands.spawn();
 
-    let mut g = Grid::new(size);
-    let mut test = 0;
-    for i in &mut g.cells {
-        i.index = test % 4;
-        test += 1;
-    }
+    let mut grid = Grid::new(size);
+    grid.randomize();
 
-    entity_commands.insert(g);
+    entity_commands.insert(grid);
     entity_commands.insert(Grid::new(size));
     entity_commands.insert_bundle(PbrBundle {
         mesh: m,

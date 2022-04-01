@@ -1,4 +1,5 @@
 use bevy::prelude::Component;
+use rand::prelude::*;
 
 #[derive(Copy, Clone)]
 pub struct Cell {
@@ -21,11 +22,20 @@ pub struct Grid {
 
 impl Grid {
     pub fn new(size: usize) -> Grid {
-        Grid {
+        let mut grid = Grid {
             size,
             cells: vec![Cell::default(); size * size],
             sheet_width: 2,
             sheet_height: 2,
+        };
+        grid
+    }
+    pub fn randomize(&mut self) {
+        let max = self.sheet_height * self.sheet_width;
+        let mut rng = rand::thread_rng();
+        for cell in &mut self.cells {
+            let index: u32 = rng.gen();
+            cell.index = index % max;
         }
     }
 }

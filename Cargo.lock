@@ -198,6 +198,7 @@ name = "bevy-game-test"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "rand",
 ]
 
 [[package]]
