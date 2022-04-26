@@ -9,7 +9,6 @@ pub fn tilemap_renderer(
         let mut m = meshes
             .get_mut(mesh.id)
             .expect("mesh was not found for grid");
-
         let scale = 1.0;
         let mut positions = Vec::<[f32; 3]>::new();
         let mut normals = Vec::<[f32; 3]>::new();
@@ -21,7 +20,6 @@ pub fn tilemap_renderer(
             for x in 0..size {
                 let index = y * size + x;
                 let cell = grid.cells.get(index).expect("grid was out of bounds");
-
                 let north_west = vec2(x as f32 * scale, y as f32 * scale + scale);
                 let north_east = vec2(x as f32 * scale + scale, y as f32 * scale + scale);
                 let south_west = vec2(x as f32 * scale, y as f32 * scale);
@@ -31,6 +29,10 @@ pub fn tilemap_renderer(
                 let tex_h = 1.0 / grid.sheet_height as f32;
                 let x = (cell.index % grid.sheet_width) as f32;
                 let y = (cell.index / grid.sheet_height) as f32;
+
+                // alpha is used to shift the texture samples 'a bit inwards' to avoid artifacts when rendering
+                // different resolutions now power of 2
+                let alpha = 0.001;
                 let u = x * tex_w;
                 let v = y * tex_h;
 
@@ -38,18 +40,22 @@ pub fn tilemap_renderer(
                     (
                         [south_west.x, south_west.y, 0.0],
                         [0.0, 0.0, 1.0],
-                        [u, v + tex_h],
+                        [u + alpha, v + tex_h - alpha],
                     ),
-                    ([north_west.x, north_west.y, 0.0], [0.0, 0.0, 1.0], [u, v]),
+                    (
+                        [north_west.x, north_west.y, 0.0],
+                        [0.0, 0.0, 1.0],
+                        [u + alpha, v + alpha],
+                    ),
                     (
                         [north_east.x, north_east.y, 0.0],
                         [0.0, 0.0, 1.0],
-                        [u + tex_w, v],
+                        [u + tex_w - alpha, v + alpha],
                     ),
                     (
                         [south_east.x, south_east.y, 0.0],
                         [0.0, 0.0, 1.0],
-                        [u + tex_w, v + tex_h],
+                        [u + tex_w - alpha, v + tex_h - alpha],
                     ),
                 ];
 

@@ -45,7 +45,7 @@ fn init_player(
 
     let transform = Transform {
         translation: Vec3::new(0.0, 0.0, 0.0),
-        scale: Vec3::splat(5.0 / 1.0),
+        scale: Vec3::splat(1.0 / 8.0),
         ..Default::default()
     };
 

@@ -9,3 +9,6 @@ pub use movement::*;
 
 pub mod input;
 pub use input::*;
+
+pub mod camera;
+pub use camera::*;
