@@ -4,6 +4,6 @@ pub struct NewGameEvent {
 
 impl Default for NewGameEvent {
     fn default() -> Self {
-        NewGameEvent { map_size: 8 }
+        NewGameEvent { map_size: 32 }
     }
 }

@@ -6,6 +6,9 @@ pub use components::*;
 mod events;
 pub use events::*;
 
+mod entities;
+pub use entities::*;
+
 mod systems;
 use systems::*;
 

@@ -1,4 +1,5 @@
 use crate::components::{Thrust, Tile, Tilemap};
+use crate::entities::Ufo;
 use crate::events::NewGameEvent;
 
 use bevy::prelude::*;
@@ -44,7 +45,7 @@ fn init_player(
 
     let transform = Transform {
         translation: Vec3::new(0.0, 0.0, 0.0),
-        scale: Vec3::splat(1.0 / 2.0),
+        scale: Vec3::splat(5.0 / 1.0),
         ..Default::default()
     };
 
@@ -54,13 +55,14 @@ fn init_player(
             transform,
             ..Default::default()
         })
-        .insert(Thrust { x: 1.0, y: 0.0 })
+        .insert(Ufo::default())
+        .insert(Thrust::default())
         .insert(Parent(tile_map_entity));
 }
 
 fn create_tilemap(
     new_game: &NewGameEvent,
-    mut commands: &mut Commands,
+    commands: &mut Commands,
     asset_server: &Res<AssetServer>,
     mut materials: &mut ResMut<Assets<StandardMaterial>>,
     mut meshes: &mut ResMut<Assets<Mesh>>,

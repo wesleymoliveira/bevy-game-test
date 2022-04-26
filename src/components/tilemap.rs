@@ -56,8 +56,6 @@ impl Tilemap {
         materials: &mut ResMut<Assets<StandardMaterial>>,
         meshes: &mut ResMut<Assets<Mesh>>,
     ) -> Entity {
-        let size = 16;
-
         let texture_handle: Handle<Image> = asset_server.load(texture_path);
         let mut mesh: Mesh = Mesh::new(PrimitiveTopology::TriangleList);
         let positions = Vec::<[f32; 3]>::new();

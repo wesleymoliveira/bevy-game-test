@@ -1,6 +1,4 @@
 use bevy::prelude::Component;
 
-#[derive(Component)]
-pub struct Ufo {
-    pub is_alive: bool,
-}
+#[derive(Component, Clone, Copy, Default)]
+pub struct Ufo {}
