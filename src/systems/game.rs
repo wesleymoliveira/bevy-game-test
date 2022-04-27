@@ -39,7 +39,7 @@ fn init_player(
     texture_atlases: &mut ResMut<Assets<TextureAtlas>>,
 ) {
     let tile_size = Vec2::new(8.0, 8.0);
-    let texture_handle = asset_server.load("tanks.png");
+    let texture_handle = asset_server.load("ufo.png");
     let texture_atlas = TextureAtlas::from_grid(texture_handle, tile_size, 4, 4);
     let texture_atlas_handle = texture_atlases.add(texture_atlas);
 

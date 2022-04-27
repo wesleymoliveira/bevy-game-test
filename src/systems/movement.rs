@@ -19,6 +19,7 @@ pub fn movement_system(mut query: Query<(&mut Thrust, &mut Transform)>, time: Re
             let dir = v.normalize();
             let x_axis = Vec3::new(1.0, 0.0, 0.0);
             let a = dir.angle_between(x_axis);
+            //todo rotate y down
             transform.rotation = Quat::from_rotation_z(a);
         }
     });
