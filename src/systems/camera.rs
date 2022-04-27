@@ -55,8 +55,6 @@ pub fn camera_system(
             // force update projection matrix without resize
             projection.update(primary.width(), primary.height());
             camera.projection_matrix = projection.get_projection_matrix();
-
-            println!("{}", fraction_x);
         }
         _ => {}
     }

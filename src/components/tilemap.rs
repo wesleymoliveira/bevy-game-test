@@ -63,9 +63,9 @@ impl Tilemap {
         let uvs = Vec::<[f32; 2]>::new();
         let indicies: Vec<u32> = Vec::new();
 
-        mesh.set_attribute(Mesh::ATTRIBUTE_POSITION, positions);
-        mesh.set_attribute(Mesh::ATTRIBUTE_NORMAL, normals);
-        mesh.set_attribute(Mesh::ATTRIBUTE_UV_0, uvs);
+        mesh.insert_attribute(Mesh::ATTRIBUTE_POSITION, positions);
+        mesh.insert_attribute(Mesh::ATTRIBUTE_NORMAL, normals);
+        mesh.insert_attribute(Mesh::ATTRIBUTE_UV_0, uvs);
 
         mesh.set_indices(Some(Indices::U32(indicies)));
 

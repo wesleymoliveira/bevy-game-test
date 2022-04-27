@@ -76,9 +76,9 @@ pub fn tilemap_renderer(
             }
         }
 
-        m.set_attribute(Mesh::ATTRIBUTE_POSITION, positions);
-        m.set_attribute(Mesh::ATTRIBUTE_NORMAL, normals);
-        m.set_attribute(Mesh::ATTRIBUTE_UV_0, uvs);
+        m.insert_attribute(Mesh::ATTRIBUTE_POSITION, positions);
+        m.insert_attribute(Mesh::ATTRIBUTE_NORMAL, normals);
+        m.insert_attribute(Mesh::ATTRIBUTE_UV_0, uvs);
         m.set_indices(Some(Indices::U32(indicies)));
     });
 }
