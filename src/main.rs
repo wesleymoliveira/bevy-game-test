@@ -33,7 +33,8 @@ fn main() {
         .add_system(input_system.system())
         .add_system(game_system.system())
         .add_system(tilemap_renderer.system())
-        .add_system(movement_system.system())
+        .add_system(movement_system.system().label("movement"))
+        .add_system(turret_system.system().after("movement"))
         .add_system(camera_system.system());
 
     builder.run();

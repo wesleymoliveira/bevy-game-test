@@ -1,4 +1,4 @@
-use crate::components::{Thrust, Tile, Tilemap};
+use crate::components::{Thrust, Tile, Tilemap, Turret};
 use crate::entities::Ufo;
 use crate::events::NewGameEvent;
 
@@ -15,8 +15,8 @@ pub fn game_system(
 ) {
     for e in new_game_reader.iter() {
         // desspawn any existing tilemap and children
-        for tile_map in tilemaps.iter_mut() {
-            commands.entity(tile_map.0).despawn_recursive();
+        for _tile_map in tilemaps.iter_mut() {
+            //commands.entity(tile_map.0).despawn_recursive();
         }
         let tile_map = create_tilemap(e, &mut commands, &asset_server, &mut materials, &mut meshes);
         init_player(
@@ -49,15 +49,36 @@ fn init_player(
         ..Default::default()
     };
 
-    let e = commands
+    commands
         .spawn_bundle(SpriteSheetBundle {
-            texture_atlas: texture_atlas_handle,
+            texture_atlas: texture_atlas_handle.clone(),
             transform,
+            sprite: TextureAtlasSprite {
+                index: 0,
+                ..Default::default()
+            },
             ..Default::default()
         })
         .insert(Ufo::default())
         .insert(Thrust::default())
         .push_children(&[tile_map_entity]);
+
+    commands
+        .spawn_bundle(SpriteSheetBundle {
+            texture_atlas: texture_atlas_handle.clone(),
+            sprite: TextureAtlasSprite {
+                index: 1,
+                ..Default::default()
+            },
+            transform: Transform {
+                translation: Vec3::new(0.0, 0.0, 1.0),
+                ..Default::default()
+            },
+            ..Default::default()
+        })
+        .insert(Turret::default());
+
+    //.push_children(&[tile_map_entity]);
 
     //.insert(Parent(tile_map_entity));
     //line above removed because adding Parent component to the entity does not work correct due to scale
