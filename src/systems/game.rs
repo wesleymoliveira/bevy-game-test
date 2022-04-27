@@ -49,7 +49,7 @@ fn init_player(
         ..Default::default()
     };
 
-    commands
+    let e = commands
         .spawn_bundle(SpriteSheetBundle {
             texture_atlas: texture_atlas_handle,
             transform,
@@ -57,7 +57,12 @@ fn init_player(
         })
         .insert(Ufo::default())
         .insert(Thrust::default())
-        .insert(Parent(tile_map_entity));
+        .push_children(&[tile_map_entity]);
+
+    //.insert(Parent(tile_map_entity));
+    //line above removed because adding Parent component to the entity does not work correct due to scale
+    // is not properly propagated: https://github.com/bevyengine/bevy/issues/1807
+    //used push_children instead
 }
 
 fn create_tilemap(

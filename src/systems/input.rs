@@ -12,7 +12,7 @@ pub fn input_system(
 
     if let Ok((_ufo, mut thrust)) = query.get_single_mut() {
         let speed = 2.0;
-        let mut v = Vec2::default();
+        let mut v = Vec3::default();
         if keyboard_input.pressed(KeyCode::W) {
             v.y = 1.0;
         } else if keyboard_input.pressed(KeyCode::S) {
