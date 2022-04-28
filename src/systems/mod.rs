@@ -12,3 +12,6 @@ pub use camera::*;
 
 mod turret;
 pub use turret::*;
+
+mod bot;
+pub use bot::*;
