@@ -1,4 +1,4 @@
-## My first bevy game
+## Bevy Game
 
 ```
 cargo run
